@@ -25,16 +25,71 @@ GPIO.setup(25, GPIO.OUT, initial=0)
 GPIO.setup(24, GPIO.OUT, initial=0)
 motorB = GPIO.PWM(13, 1000)
 
-# Motor A, fullspeed, right
+# Motor A, fullspeed, back
 motorA.start(100)
+GPIO.output(7, 0)
+GPIO.output(8, 1)
+# Motor B, full speed, back
+motorB.start(100)
+GPIO.output(25, 0)
+GPIO.output(24, 1)
+
+sleep(1)
+# Stop
+GPIO.output(7, 0)
+GPIO.output(8, 0)
+GPIO.output(25, 0)
+GPIO.output(24, 0)
+sleep(0.5)
+
+# Motor A, fullspeed, front
+motorA.ChangeDutyCycle(100)
 GPIO.output(7, 1)
 GPIO.output(8, 0)
-# Motor B, full speed, left
-motorB.start(100)
+# Motor B, full speed, front
+motorB.ChangeDutyCycle(100)
 GPIO.output(25, 1)
 GPIO.output(24, 0)
 
-sleep(3)
+sleep(1)
+
+# Stop
+GPIO.output(7, 0)
+GPIO.output(8, 0)
+GPIO.output(25, 0)
+GPIO.output(24, 0)
+sleep(0.5)
+
+# Motor A, fullspeed, front
+motorA.ChangeDutyCycle(100)
+GPIO.output(7, 1)
+GPIO.output(8, 0)
+# Motor B, full speed, back
+motorB.ChangeDutyCycle(100)
+GPIO.output(25, 0)
+GPIO.output(24, 1)
+
+sleep(1)
+
+# Stop
+GPIO.output(7, 0)
+GPIO.output(8, 0)
+GPIO.output(25, 0)
+GPIO.output(24, 0)
+sleep(0.5)
+
+# Motor A, fullspeed, back
+motorA.ChangeDutyCycle(100)
+GPIO.output(7, 0)
+GPIO.output(8, 1)
+# Motor B, full speed, front
+motorB.ChangeDutyCycle(100)
+GPIO.output(25, 1)
+GPIO.output(24, 0)
+
+sleep(1)
+
+
 
 # Stop and clean
 motorA.stop()
