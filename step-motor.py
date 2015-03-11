@@ -7,13 +7,13 @@ from stepper import Stepper
 # Numbering by GPIO number, not header pin numberring
 GPIO.setmode(GPIO.BCM)
 
-# Use GPIO02 J8-03 |
-#     GPIO03 J8-05 |
+# Use GPIO03 J8-05 |
 #     GPIO04 J8-07 |
-#     GPIO17 J8-11 | to control stepper motor
+#     GPIO17 J8-11 |
+#     GPIO27 J8-13 | to control stepper motor
 
 # Config pins
-step_pins = [2, 3, 4, 17]
+step_pins = [3, 4, 17, 27]
 
 for pin in step_pins:
 	GPIO.setup(pin, GPIO.OUT, initial=0)
@@ -40,12 +40,12 @@ def write(value):
 
 s = Stepper(write=write, full_step=False)
 s.single_step(1)
-s.step_to(s.position + 200)
-s.step_relative(200)
+s.step_to(s.position + 2000)
+s.step_relative(2000)
 sleep(1)
 s.single_step(-1)
-s.step_to(s.position - 200)
-s.step_relative(-200)
+s.step_to(s.position - 2000)
+s.step_relative(-2000)
 sleep(1)
 # Clean
 GPIO.cleanup()
