@@ -8,16 +8,16 @@ GPIO.setmode(GPIO.BCM)
 
 # Use GPIO12 (PWM0) J8-32 to control speed of motor A
 #	  GPIO13 (PWM1) J8-33 to control speed of motor B
-# Use GPIO14 J8-8   |
-#     GPIO15 J8-10  | to control direction of motor A
-# Use GPIO18 J8-12  |
-#     GPIO23 J8-16  | to control direction of motor B
+# Use GPIO07 J8-26   |
+#     GPIO08 J8-24  | to control direction of motor A
+# Use GPIO25 J8-22  |
+#     GPIO24 J8-18  | to control direction of motor B
 
 # Config pins
 # Motor A
 GPIO.setup(12, GPIO.OUT)
-GPIO.setup(14, GPIO.OUT, initial=0)
-GPIO.setup(15, GPIO.OUT, initial=0)
+GPIO.setup(7, GPIO.OUT, initial=0)
+GPIO.setup(8, GPIO.OUT, initial=0)
 motorA = GPIO.PWM(12, 1000)
 # Motor B
 GPIO.setup(13, GPIO.OUT)
@@ -27,8 +27,13 @@ motorB = GPIO.PWM(13, 1000)
 
 # Motor A, fullspeed, right
 motorA.start(100)
-GPIO.output(14, 1)
-GPIO.output(15, 0)
+GPIO.output(7, 1)
+GPIO.output(8, 0)
 
 
 sleep(3)
+
+# Stop and clean
+motorA.stop()
+motorB.stop()
+GPIO.cleanup()
