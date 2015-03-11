@@ -29,7 +29,10 @@ motorB = GPIO.PWM(13, 1000)
 motorA.start(100)
 GPIO.output(7, 1)
 GPIO.output(8, 0)
-
+# Motor B, full speed, left
+motorB.start(100)
+GPIO.output(18, 1)
+GPIO.output(23, 0)
 
 sleep(3)
 
