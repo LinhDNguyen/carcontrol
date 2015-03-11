@@ -21,8 +21,8 @@ GPIO.setup(8, GPIO.OUT, initial=0)
 motorA = GPIO.PWM(12, 1000)
 # Motor B
 GPIO.setup(13, GPIO.OUT)
-GPIO.setup(18, GPIO.OUT, initial=0)
-GPIO.setup(23, GPIO.OUT, initial=0)
+GPIO.setup(25, GPIO.OUT, initial=0)
+GPIO.setup(24, GPIO.OUT, initial=0)
 motorB = GPIO.PWM(13, 1000)
 
 # Motor A, fullspeed, right
@@ -31,8 +31,8 @@ GPIO.output(7, 1)
 GPIO.output(8, 0)
 # Motor B, full speed, left
 motorB.start(100)
-GPIO.output(18, 1)
-GPIO.output(23, 0)
+GPIO.output(25, 1)
+GPIO.output(24, 0)
 
 sleep(3)
 
