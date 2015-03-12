@@ -111,25 +111,26 @@ if __name__ == '__main__':
                 break
             elif char == curses.KEY_RIGHT:
                 stop()
-                sleep(0.2)
+                sleep(0.1)
                 screen.addstr(0, 0, 'right')
                 go(100, -100)
             elif char == curses.KEY_LEFT:
                 stop()
-                sleep(0.2)
+                sleep(0.1)
                 screen.addstr(0, 0, 'left ')
                 go(-100, 100)
             elif char == curses.KEY_UP:
                 stop()
-                sleep(0.2)
+                sleep(0.1)
                 screen.addstr(0, 0, 'up   ')
                 go(100, 100)
             elif char == curses.KEY_DOWN:
                 stop()
-                sleep(0.2)
+                sleep(0.1)
                 screen.addstr(0, 0, 'down ')
                 go(-100, -100)
             else:
+                screen.addstr(0, 0, 'stop ')
                 stop()
     finally:
         # shut down cleanly
