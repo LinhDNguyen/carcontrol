@@ -38,14 +38,14 @@ def write(value):
 		GPIO.output(step_pins[3], 0)
 
 
-s = Stepper(write=write, full_step=False)
+s = Stepper(write=write, full_step=False, delay=0.001)
 s.single_step(1)
-s.step_to(s.position + 200)
-s.step_relative(200)
+s.step_to(s.position + 2000)
+s.step_relative(2000)
 sleep(1)
 s.single_step(-1)
-s.step_to(s.position - 200)
-s.step_relative(-200)
+s.step_to(s.position - 2000)
+s.step_relative(-2000)
 sleep(1)
 # Clean
 GPIO.cleanup()
