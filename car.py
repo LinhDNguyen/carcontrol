@@ -106,16 +106,23 @@ if __name__ == '__main__':
             if char == ord('q'):
                 break
             elif char == curses.KEY_RIGHT:
-                # print doesn't work with curses, use addstr instead
+                stop()
+                sleep(0.2)
                 screen.addstr(0, 0, 'right')
                 go(100, -100)
             elif char == curses.KEY_LEFT:
+                stop()
+                sleep(0.2)
                 screen.addstr(0, 0, 'left ')
                 go(-100, 100)
             elif char == curses.KEY_UP:
+                stop()
+                sleep(0.2)
                 screen.addstr(0, 0, 'up   ')
                 go(100, 100)
             elif char == curses.KEY_DOWN:
+                stop()
+                sleep(0.2)
                 screen.addstr(0, 0, 'down ')
                 go(-100, -100)
             else:
