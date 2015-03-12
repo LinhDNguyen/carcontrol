@@ -31,6 +31,7 @@ def config_gpio():
     GPIO.setup(25, GPIO.OUT, initial=0)
     GPIO.setup(24, GPIO.OUT, initial=0)
     motorRight = GPIO.PWM(13, 1000)
+
     motorLeft.start(0)
     motorRight.start(0)
 
@@ -79,8 +80,8 @@ def terminate():
     global motorLeft
     global motorRight
     # Stop and clean
-    motorA.stop()
-    motorB.stop()
+    motorLeft.stop()
+    motorRight.stop()
     GPIO.cleanup()
 
 
