@@ -2,7 +2,7 @@
 
 import RPi.GPIO as GPIO
 from time import sleep
-from stepper import Stepper
+from mystepper import Stepper
 
 # Numbering by GPIO number, not header pin numberring
 GPIO.setmode(GPIO.BCM)
