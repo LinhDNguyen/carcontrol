@@ -25,27 +25,17 @@ def config_gpio():
     GPIO.setup(12, GPIO.OUT)
     GPIO.setup(7, GPIO.OUT, initial=0)
     GPIO.setup(8, GPIO.OUT, initial=0)
-    motorLeft = GPIO.PWM(12, 1000)
+    motorRight = GPIO.PWM(12, 1000)
     # Motor B
     GPIO.setup(13, GPIO.OUT)
     GPIO.setup(25, GPIO.OUT, initial=0)
     GPIO.setup(24, GPIO.OUT, initial=0)
-    motorRight = GPIO.PWM(13, 1000)
+    motorLeft = GPIO.PWM(13, 1000)
 
     motorLeft.start(0)
     motorRight.start(0)
 
 def left_dir(direction):
-    if direction > 0:
-        GPIO.output(7, 1)
-        GPIO.output(8, 0)
-    elif direction == 0:
-        GPIO.output(7, 0)
-        GPIO.output(8, 0)
-    else:
-        GPIO.output(7, 0)
-        GPIO.output(8, 1)
-def right_dir(direction):
     if direction > 0:
         GPIO.output(25, 1)
         GPIO.output(24, 0)
@@ -55,6 +45,16 @@ def right_dir(direction):
     else:
         GPIO.output(25, 0)
         GPIO.output(24, 1)
+def right_dir(direction):
+    if direction > 0:
+        GPIO.output(7, 1)
+        GPIO.output(8, 0)
+    elif direction == 0:
+        GPIO.output(7, 0)
+        GPIO.output(8, 0)
+    else:
+        GPIO.output(7, 0)
+        GPIO.output(8, 1)
 def stop():
     global motorLeft
     global motorRight
@@ -69,8 +69,12 @@ def go(left, right):
     rd = 1
     if left < 0:
         ld = -1
+    elif left == 0:
+        ld = 0
     if right < 0:
         rd = -1
+    elif right == 0:
+        rd = 0
     left_dir(ld)
     right_dir(rd)
     motorLeft.ChangeDutyCycle(abs(left))
